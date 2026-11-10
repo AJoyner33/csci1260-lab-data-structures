@@ -12,8 +12,22 @@ public static class BracketChecker
     // Every other character is ignored.
     public static bool IsBalanced(string text)
     {
-        // TODO: Part C, Exercise 3. Use a MyStack<char>.
-        throw new NotImplementedException();
+        MyStack<char> open = new MyStack<char>();
+        foreach (char c in text)
+        {
+            if (c == '(' || c == '[' || c == '{')
+            {
+                open.Push(c);
+            }
+            else if (c == ')' || c == ']' || c == '}')
+            {
+                if (open.IsEmpty || !Matches(open.Pop(), c))
+                {
+                    return false; // case 1 and 2
+                }
+            }
+        }
+        return open.IsEmpty; // case 3
     }
 
     // Given. True when close is the partner of open.
