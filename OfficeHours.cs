@@ -14,6 +14,21 @@ public static class OfficeHours
     public static MyList<string> Run(MyQueue<Visit> line, int slice)
     {
         // TODO: Part D, Exercise 4
-        throw new NotImplementedException();
+        MyList<string> finished = new MyList<string>();
+        int clock = 0;
+        while (!line.IsEmpty)
+        {
+            Visit v = line.Dequeue();
+            clock += v.Help(slice);
+            if (v.MinutesLeft > 0)
+            {
+                line.Enqueue(v);
+            }
+            else
+            {
+                finished.Add(v.Name + " done at minute " + clock);
+            }
+        }
+        return finished;
     }
 }
