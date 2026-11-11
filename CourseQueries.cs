@@ -8,14 +8,19 @@ public static class CourseQueries
     public static List<string> OpenCourseCodes(List<Course> courses)
     {
         // TODO: Part G, demo. Where, then Select, then ToList.
-        throw new NotImplementedException();
+        List<string> open = courses.Where(c => c.SeatsLeft > 0)
+                                       .Select(c => c.Code)
+                                       .ToList();
+        return open;
     }
 
     // Part G, demo: the titles of the four credit courses.
     public static List<string> FourCreditTitles(List<Course> courses)
     {
-        // TODO: Part G, demo
-        throw new NotImplementedException();
+        List<string> fourCredit = courses.Where(c => c.Credits == 4)
+                                         .Select(c => c.Title)
+                                         .ToList();
+        return fourCredit;  
     }
 
     // Exercise 7: one line per open course, in list order,
@@ -23,7 +28,9 @@ public static class CourseQueries
     public static List<string> SeatsLeftReport(List<Course> courses)
     {
         // TODO: Part G, Exercise 7
-        throw new NotImplementedException();
+        return courses.Where(c => c.SeatsLeft > 0)
+                      .Select(c => c.Code + ": " + c.SeatsLeft + " seats left")
+                      .ToList();
     }
 
     // Part H, demo: the three biggest courses, largest first,
