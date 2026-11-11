@@ -15,11 +15,13 @@ public class MyList<T>
         count = 0;
     }
 
-    
+    // Number of items currently in the list.
     public int Count => count;
+    // Number of slots in the underlying array.
     public int Capacity => items.Length;
 
     // Add to the end. Grow first if every slot is taken.
+    // Adds an item to the end, growing the array first if it is full.
     public void Add(T item)
     {
         if (count == items.Length)
@@ -32,6 +34,7 @@ public class MyList<T>
 
     // The indexer is the code behind list[2]. Both get and set must
     // refuse any index that is not in use.
+    // Gets or sets the item at index, refusing any index that is not in use.
     public T this[int index]
     {
         get
@@ -49,6 +52,7 @@ public class MyList<T>
     // Insert anywhere from 0 to Count. Inserting at Count is legal and
     // means the same thing as Add. Throw ArgumentOutOfRangeException
     // for anything else.
+    // Inserts an item at any index from 0 to Count, growing first if needed.
     public void Insert(int index, T item)
     {
         if (index < 0 || index > count)
@@ -68,6 +72,7 @@ public class MyList<T>
     }
 
     // Remove the item at index and close the gap.
+    // Removes the item at index and shifts later items left to close the gap.
     public void RemoveAt(int index)
     {
         CheckIndex(index);
@@ -80,6 +85,7 @@ public class MyList<T>
 
     // Linear search. Return the index, or -1 when the item is not there.
     // Compare with Equals(a, b), which works for every type T.
+    // Returns the index of the first item equal to item, or -1 if it is not there.
     public int IndexOf(T item)
     {
         for (int i = 0; i < count; i++)
@@ -110,6 +116,7 @@ public class MyList<T>
     //   Grow()            make a new array twice the size, copy every item
     //   CheckIndex(index) throw ArgumentOutOfRangeException unless
     //                     0 <= index < count
+    // Replaces the array with one twice the size, copying every item in use.
     private void Grow()
     {
         T[] bigger = new T[items.Length * 2];
@@ -120,6 +127,7 @@ public class MyList<T>
         items = bigger;
     }
 
+    // Throws ArgumentOutOfRangeException unless 0 <= index < count.
     private void CheckIndex(int index)
     {
         if (index < 0 || index >= count)

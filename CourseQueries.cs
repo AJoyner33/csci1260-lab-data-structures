@@ -5,6 +5,7 @@
 public static class CourseQueries
 {
     // Part G, demo: the code of every course with at least one open seat.
+    // Returns the code of every course with at least one open seat.
     public static List<string> OpenCourseCodes(List<Course> courses)
     {
         List<string> open = courses.Where(c => c.SeatsLeft > 0)
@@ -14,6 +15,7 @@ public static class CourseQueries
     }
 
     // Part G, demo: the titles of the four credit courses.
+    // Returns the title of every four-credit course.
     public static List<string> FourCreditTitles(List<Course> courses)
     {
         List<string> fourCredit = courses.Where(c => c.Credits == 4)
@@ -24,6 +26,7 @@ public static class CourseQueries
 
     // Exercise 7: one line per open course, in list order,
     // like "CSCI 1250: 2 seats left".
+    // Returns one "CODE: n seats left" line for each course with open seats.
     public static List<string> SeatsLeftReport(List<Course> courses)
     {
         return courses.Where(c => c.SeatsLeft > 0)
@@ -33,6 +36,7 @@ public static class CourseQueries
 
     // Part H, demo: the three biggest courses, largest first,
     // like "ENGL 1010 (150)".
+    // Returns the three largest courses by enrollment as "CODE (count)" strings.
     public static List<string> TopThreeByEnrollment(List<Course> courses)
     {
         return courses.OrderByDescending(c => c.Enrolled)
@@ -42,18 +46,21 @@ public static class CourseQueries
     }
 
     // Part H, demo: every student in every course, added up.
+    // Returns the total number of students enrolled across all courses.
     public static int TotalEnrolled(List<Course> courses)
     {
         return courses.Sum(c => c.Enrolled);
     }
 
     // Part H, demo: how many courses have no seats left.
+    // Returns how many courses have no seats left.
     public static int FullCourseCount(List<Course> courses)
     {
         return courses.Count(c => c.SeatsLeft == 0);
     }
 
     // Part H, demo: a dictionary from course code to course, in one line.
+    // Returns a dictionary from course code to course.
     public static Dictionary<string, Course> ByCode(List<Course> courses)
     {
         return courses.ToDictionary(c => c.Code);
@@ -61,6 +68,7 @@ public static class CourseQueries
 
     // Exercise 8: one line per department, most students first,
     // like "ENGL | courses: 2 | students: 246".
+    // Returns one line per department, most students first, with its course and student counts.
     public static List<string> DepartmentReport(List<Course> courses)
     {
         return courses.GroupBy(c => c.Dept)

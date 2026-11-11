@@ -10,6 +10,7 @@ public static class BracketChecker
     //   2. closing in the wrong order                    ( [ ) ]
     //   3. leaving something open at the end             ( ( )
     // Every other character is ignored.
+    // Returns true when every (, [, and { is closed by its partner in the right order.
     public static bool IsBalanced(string text)
     {
         MyStack<char> open = new MyStack<char>();

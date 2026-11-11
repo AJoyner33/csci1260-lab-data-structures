@@ -6,10 +6,12 @@ public class CourseCatalog
     // that maps a course code to its title.
     private Dictionary<string, string> catalog = new Dictionary<string, string>();
 
+    // Number of courses in the catalog.
     public int Count => catalog.Count;
 
     // Adds a course. Returns false, and changes nothing, when the code is
     // already there. Hint: one of the three ways to write does exactly this.
+    // Adds a course and returns true, or returns false if the code is already there.
     public bool AddCourse(string code, string title)
     {
         if (catalog.ContainsKey(code))
@@ -22,6 +24,7 @@ public class CourseCatalog
 
     // Returns the title for a code, or "(no such course)" when the code is
     // missing. Use TryGetValue, so the code is looked up only once.
+    // Returns the title for a course code, or "(no such course)" if the code is missing.
     public string TitleFor(string code)
     {
         if (catalog.TryGetValue(code, out string title))

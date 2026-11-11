@@ -8,6 +8,7 @@ public static class ArrayTools
 {
     // Linear search: check every slot in use until you find the target.
     // Return the index, or -1 when the target is not there.
+    // Returns the index of the first slot in use that matches target, or -1 if none does.
     public static int IndexOf(int[] data, int count, int target)
     {
         for (int i = 0; i < count; i++)
@@ -22,6 +23,7 @@ public static class ArrayTools
 
     // Insert: shift right starting from the END, then drop the value
     // into the gap. Return the new count.
+    // Inserts value at index by shifting later items right from the end, and returns the new count.
     public static int InsertAt(int[] data, int count, int index, int value)
     {
         for (int i = count; i > index; i--)
@@ -34,6 +36,7 @@ public static class ArrayTools
 
     // Remove: shift left starting at the gap. The last slot is no longer
     // in use, so the count drops by one. Return the new count.
+    // Removes the item at index by shifting later items left, and returns the new count.
     public static int RemoveAt(int[] data, int count, int index)
     {
         for (int i = index; i < count - 1; i++)

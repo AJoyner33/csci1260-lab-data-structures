@@ -26,6 +26,7 @@ public class MyHashTable<TKey, TValue> where TKey : notnull
     //   BucketFor(key)  steps 1 and 2: hash the key with GetHashCode, then
     //                   pick a bucket with %. Wrap it in Math.Abs, because
     //                   a hash code can be negative.
+    // Returns the index of the bucket that holds the given key.
     private int BucketFor(TKey key)
     {
         return Math.Abs(key.GetHashCode() % buckets.Length);
@@ -33,6 +34,7 @@ public class MyHashTable<TKey, TValue> where TKey : notnull
 
     // Adds a pair to the key's bucket. Throw ArgumentException when the key
     // is already in that bucket. Compare keys with Equals(a, b).
+    // Adds a key and value to the key's bucket, throwing if the key is already there.
     public void Add(TKey key, TValue value)
     {
         List<KeyValuePair<TKey, TValue>> bucket = buckets[BucketFor(key)];
@@ -50,6 +52,7 @@ public class MyHashTable<TKey, TValue> where TKey : notnull
     // Step 3: search only the key's own bucket. When the key is there, set
     // value to its value and return true. When it is not, set value to
     // default and return false.
+    // Looks in the key's own bucket and returns true with the value if found, otherwise false.
     public bool TryGetValue(TKey key, out TValue? value)
     {
         List<KeyValuePair<TKey, TValue>> bucket = buckets[BucketFor(key)];

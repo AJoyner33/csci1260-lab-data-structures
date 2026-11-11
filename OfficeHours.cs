@@ -11,6 +11,7 @@ public static class OfficeHours
     //   3. if they still need time, send them to the back of the line;
     //      otherwise add "<Name> done at minute <clock>" to the result
     // Return the result list. Do not print anything here.
+    // Runs the line in turns of slice minutes and returns when each student finished.
     public static MyList<string> Run(MyQueue<Visit> line, int slice)
     {
         MyList<string> finished = new MyList<string>();

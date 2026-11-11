@@ -14,6 +14,7 @@ public class MyQueue<T>
 
     // Join the back of the line. Grow first if every slot is taken.
     // The back of the line is at (head + count) % items.Length.
+    // Adds an item at the back of the line, growing the array first if it is full.
     public void Enqueue(T item)
     {
         if (count == items.Length)
@@ -27,6 +28,7 @@ public class MyQueue<T>
 
     // Leave from the front of the line. Move head forward one slot,
     // wrapping with %, and hand back the item that was in front.
+    // Removes and returns the item at the front by moving head forward one slot.
     public T Dequeue()
     {
         T front = Peek();
@@ -47,6 +49,7 @@ public class MyQueue<T>
 
     //   Grow()  copy the items FRONT TO BACK into an array twice the size,
     //           so the line starts at slot 0 again, then set head to 0
+    // Copies the line front to back into an array twice the size and resets head to 0.
     private void Grow()
     {
         T[] bigger = new T[items.Length * 2];

@@ -9,6 +9,7 @@ public static class WordCount
     //      all separate words, and empty pieces are skipped.
     //   3. Use the counting pattern: a new word starts at 1, a word you
     //      have seen before goes up by 1.
+    // Returns how many times each word appears in the text, ignoring case and punctuation.
     public static Dictionary<string, int> Count(string text)
     {
         Dictionary<string, int> counts = new Dictionary<string, int>();
