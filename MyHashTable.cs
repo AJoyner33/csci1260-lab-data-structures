@@ -52,7 +52,6 @@ public class MyHashTable<TKey, TValue> where TKey : notnull
     // default and return false.
     public bool TryGetValue(TKey key, out TValue? value)
     {
-        // TODO: Part F, Exercise 6
         List<KeyValuePair<TKey, TValue>> bucket = buckets[BucketFor(key)];
         foreach (KeyValuePair<TKey, TValue> pair in bucket)
         {

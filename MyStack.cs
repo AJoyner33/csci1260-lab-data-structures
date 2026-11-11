@@ -30,7 +30,6 @@ public class MyStack<T>
     // InvalidOperationException("Stack is empty.").
     public T Peek()
     {
-        // TODO: Part C, demo
         if (IsEmpty)
         {
             throw new InvalidOperationException("Stack is empty.");

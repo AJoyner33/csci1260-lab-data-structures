@@ -11,7 +11,6 @@ public static class WordCount
     //      have seen before goes up by 1.
     public static Dictionary<string, int> Count(string text)
     {
-        // TODO: Part E, Exercise 5
         Dictionary<string, int> counts = new Dictionary<string, int>();
         char[] separators = { ' ', ',', '.', '!', '?', ';', ':' };
         string[] words = text.ToLower().Split(separators, StringSplitOptions.RemoveEmptyEntries);

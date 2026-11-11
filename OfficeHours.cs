@@ -13,7 +13,6 @@ public static class OfficeHours
     // Return the result list. Do not print anything here.
     public static MyList<string> Run(MyQueue<Visit> line, int slice)
     {
-        // TODO: Part D, Exercise 4
         MyList<string> finished = new MyList<string>();
         int clock = 0;
         while (!line.IsEmpty)
