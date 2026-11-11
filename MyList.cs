@@ -22,7 +22,6 @@ public class MyList<T>
     // Add to the end. Grow first if every slot is taken.
     public void Add(T item)
     {
-        // TODO: Part B, demo
         if (count == items.Length)
         {
             Grow();
