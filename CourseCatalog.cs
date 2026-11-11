@@ -5,16 +5,22 @@ public class CourseCatalog
 {
     // TODO: Part E. Declare one private field: a Dictionary<string, string>
     // that maps a course code to its title.
+    private Dictionary<string, string> catalog = new Dictionary<string, string>();
 
     // TODO: Part E. How many courses are in the catalog.
-    public int Count => throw new NotImplementedException();
+    public int Count => catalog.Count;
 
     // Adds a course. Returns false, and changes nothing, when the code is
     // already there. Hint: one of the three ways to write does exactly this.
     public bool AddCourse(string code, string title)
     {
         // TODO: Part E, demo
-        throw new NotImplementedException();
+        if (catalog.ContainsKey(code))
+        {
+            return false;
+        }
+        catalog[code] = title;
+        return true;
     }
 
     // Returns the title for a code, or "(no such course)" when the code is
@@ -22,6 +28,10 @@ public class CourseCatalog
     public string TitleFor(string code)
     {
         // TODO: Part E, demo
-        throw new NotImplementedException();
+        if (catalog.TryGetValue(code, out string title))
+        {
+            return title;
+        }
+        return "(no such course)";
     }
 }
